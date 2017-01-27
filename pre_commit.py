@@ -1,4 +1,15 @@
-from subprocess import call
+#! /usr/bin/python3
 
-if __name__ == '__main__':
-	exit(call(['python3', 'tests.py']))
+from subprocess import Popen
+
+import sys
+
+
+def shell_command(command):
+    proc = Popen(command)
+    proc.wait()
+    return proc.returncode
+
+
+code = shell_command(['python3', 'tests.py'])
+sys.exit(code)
